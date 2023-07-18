@@ -7,7 +7,7 @@ class Profile(models.Model):
     name = models.CharField(_("الاسم"), max_length=50)
     how_i = models.TextField(_("من انا"),max_length=300)
     price = models.IntegerField(_("سعر الكشف"))    
-    Is_manager = models.BoolenField(_("مدير"))
+    is_manager = models.BooleanField(_("مدير"))
  
     class Meta:
         verbose_name = _("Profile")
