@@ -4,25 +4,33 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from django.db.models.signals import post_save
 from django.utils.text import slugify
-
+Type_of_person = (
+    ("M","Male"),
+    ("F", "Fmale")
+)
 class Profile(models.Model):
+    Type_of_palace = (
+    ("مطعم","مطعم"),
+    ("بار", "بار")
+)
+
     user = models.OneToOneField(User, verbose_name=_("user"), on_delete=models.CASCADE)
     name = models.CharField(_("الاسم"), max_length=50)
     subtitle = models.TextField(_("نبذة عنك"),max_length=250)
     address = models.CharField(_("المحافظة"),max_length=50,blank=True,null = True)
     address_detail = models.CharField(_("العنوان بالتفصيل"),max_length=250,blank=True,null = True)
     number_phone = models.CharField(_("رقم الهاتف"),max_length=50,blank=True,null = True)
-
+    join_in = models.DateTimeField(_("تاريخ الانضمام"), auto_now_add=True , blank=True,null = True)
     facebook = models.CharField(_("facebbok"),max_length=50,blank=True,null = True)
     twitter = models.CharField(_("twitter"),max_length=50,blank=True,null = True)
     google = models.CharField(_("google"),max_length=50,blank=True,null = True)
 
-
+    type_of_person = models.CharField(_("النوع :"),choices=Type_of_person, max_length=50)
 
 
     working_time = models.CharField(_("ساعات العمل"),max_length=50,blank=True,null = True)
     waiting_time = models.IntegerField(_("ساعات الانتظار"),blank=True,null = True)
-    specialist_res = models.CharField(_("متخصص في"),max_length=50,blank=True,null = True)
+    specialist_res = models.CharField(_("متخصص في"),choices=Type_of_palace,max_length=50,blank=True,null = True)
     price = models.IntegerField(_("سعر الكشف"),blank=True,null=True)    
     is_manager = models.BooleanField(_("مدير"),blank=True,null=True)
     image = models.ImageField(_("الصورة الشخصية"),upload_to="profile")
