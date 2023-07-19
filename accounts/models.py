@@ -13,9 +13,9 @@ class Profile(models.Model):
     address_detail = models.CharField(_("العنوان بالتفصيل"),max_length=250,blank=True,null = True)
     number_phone = models.CharField(_("رقم الهاتف"),max_length=50,blank=True,null = True)
 
-    facebook = models.CharField(_("رقم الهاتف"),max_length=50,blank=True,null = True)
-    twitter = models.CharField(_("رقم الهاتف"),max_length=50,blank=True,null = True)
-    google = models.CharField(_("رقم الهاتف"),max_length=50,blank=True,null = True)
+    facebook = models.CharField(_("facebbok"),max_length=50,blank=True,null = True)
+    twitter = models.CharField(_("twitter"),max_length=50,blank=True,null = True)
+    google = models.CharField(_("google"),max_length=50,blank=True,null = True)
 
 
 
